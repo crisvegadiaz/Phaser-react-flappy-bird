@@ -1,6 +1,6 @@
+import { useEffect, useState, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { CgMenuGridR } from "react-icons/cg";
-import { useEffect, useState } from "react";
 import { config } from "../scene/config.js";
 import Modal from "../components/Modal";
 import Phaser from "phaser";
@@ -11,32 +11,39 @@ function Juego() {
   const location = useLocation();
   const [game, setGame] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const isGameStarted = location.state?.isGameStarted || false;
 
-  const openDialog = () => {
+  const isGameStarted = Boolean(location.state?.isGameStarted);
+
+  // Maneja la apertura/cierre del diálogo y pausa/reanuda la escena activa
+  const handleDialogToggle = useCallback(() => {
     if (!game) return;
-    const activeScene = game.scene.getScenes(false)[0];
+    const [activeScene] = game.scene.getScenes(false);
     if (!activeScene) return;
 
-    if (isDialogOpen) {
-      setIsDialogOpen(false);
-      activeScene.scene.resume();
-    } else {
-      setIsDialogOpen(true);
-      activeScene.scene.pause();
-    }
-  };
+    setIsDialogOpen((prevOpen) => {
+      if (prevOpen) {
+        activeScene.scene.resume();
+      } else {
+        activeScene.scene.pause();
+      }
+      return !prevOpen;
+    });
+  }, [game]);
 
+  // Inicializa el juego solo una vez cuando está listo para empezar
   useEffect(() => {
     if (isGameStarted && !game) {
-      setGame(new Phaser.Game(config));
+      const phaserGame = new Phaser.Game(config);
+      setGame(phaserGame);
     }
+    // Opcional: limpiar el juego al desmontar el componente
+    // return () => { phaserGame?.destroy(true); };
   }, [isGameStarted, game]);
 
   return (
     <>
       <div id="game">
-        <button onClick={openDialog}>
+        <button onClick={handleDialogToggle} aria-label="Abrir menú">
           <CgMenuGridR className="menu" />
         </button>
       </div>

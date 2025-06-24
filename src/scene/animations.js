@@ -1,11 +1,12 @@
 export const createAnimations = (game) => {
-  if (!game.anims.exists("pio-fly")) {
+  const animKey = "pio-fly";
+
+  if (!game.anims.exists(animKey)) {
     game.anims.create({
-      key: "pio-fly",
+      key: animKey,
       frames: game.anims.generateFrameNumbers("pio", { start: 0, end: 1 }),
       frameRate: 12,
       repeat: -1,
     });
   }
 };
-

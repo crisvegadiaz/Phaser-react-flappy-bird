@@ -1,57 +1,56 @@
 #inicio {
-    align-items: center;
-    background-color: #049cd8;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;
-    position: relative;
-    background-image: url("../img/nube1.svg"),
-        url("../img/nube2.svg");
-    background-repeat: no-repeat;
-    background-position: right -30% top 80%, right -10% top 30%;
-    animation: clouds 30s linear infinite;
+  align-items: center;
+  background-color: #049cd8;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  position: relative;
+  background-image: url("/img/nube1.svg"), url("/img/nube2.svg");
+  background-repeat: no-repeat;
+  background-position: right -30% top 80%, right -10% top 30%;
+  animation: clouds 30s linear infinite;
 }
 
 @keyframes clouds {
-    0% {
-        background-position: right -30% top 80%, right -20% top 30%;
-    }
+  0% {
+    background-position: right -30% top 80%, right -20% top 30%;
+  }
 
-    100% {
-        background-position: left -110% top 80%, left -110% top 30%;
-    }
+  100% {
+    background-position: left -110% top 80%, left -110% top 30%;
+  }
 }
 
 #inicio a {
-    align-items: center;
-    background-color: rgb(250, 250, 74);
-    border-radius: 50%;
-    box-shadow: 0px 24px 0px rgb(179, 179, 23);
-    color: rgb(70, 65, 65);
-    display: flex;
-    font-family: "pixel";
-    font-size: 4rem;
-    height: 15rem;
-    justify-content: center;
-    text-decoration: none;
-    padding: 5rem;
-    transition: all 0.2s ease;
-    width: 15rem;
-    z-index: 1;
+  align-items: center;
+  background-color: rgb(250, 250, 74);
+  border-radius: 50%;
+  box-shadow: 0px 24px 0px rgb(179, 179, 23);
+  color: rgb(70, 65, 65);
+  display: flex;
+  font-family: "pixel";
+  font-size: 4rem;
+  height: 15rem;
+  justify-content: center;
+  text-decoration: none;
+  padding: 5rem;
+  transition: all 0.2s ease;
+  width: 15rem;
+  z-index: 1;
 }
 
 #inicio a:active {
-    background-color: rgb(240, 240, 176);
-    box-shadow: 0px 20px 0px rgb(150, 150, 20);
-    transform: translateY(5px);
+  background-color: rgb(240, 240, 176);
+  box-shadow: 0px 20px 0px rgb(150, 150, 20);
+  transform: translateY(5px);
 }
 
 @media (width <768px) {
-    #inicio a {
-        width: 10rem;
-        height: 10rem;
-        font-size: 3rem;
-        padding: 2rem;
-    }
+  #inicio a {
+    width: 10rem;
+    height: 10rem;
+    font-size: 3rem;
+    padding: 2rem;
+  }
 }

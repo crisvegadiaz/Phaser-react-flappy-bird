@@ -1,11 +1,10 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
 import ReactDOM from "react-dom/client";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Inicio from "./pages/Inicio.jsx";
 import Juego from "./pages/Juego.jsx";
 import "./style/index.css";
-import React from "react";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const App = () => (
   <HashRouter>
     <Routes>
       <Route path="/" element={<Inicio />} />
@@ -13,3 +12,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Routes>
   </HashRouter>
 );
+
+const root = document.getElementById("root");
+ReactDOM.createRoot(root).render(<App />);
